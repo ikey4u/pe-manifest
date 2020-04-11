@@ -3,10 +3,10 @@
 
   <!-- Remote Tags -->
   <remote name="aosp"
-          fetch="https://android.googlesource.com"
+          fetch="git://172.20.109.112/aosp"
           review="https://android-review.googlesource.com/" />
   <remote name="lineage"
-          fetch="https://github.com/LineageOS"
+          fetch="git://172.20.109.112/lineage"
           revision="lineage-17.1" />
   <remote name="github"
           fetch="https://github.com/" />
