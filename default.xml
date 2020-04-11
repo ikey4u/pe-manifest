@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
 
+  <!-- Remote Tags -->
   <remote name="aosp"
           fetch="https://android.googlesource.com"
           review="https://android-review.googlesource.com/" />
-
+  <remote name="lineage"
+          fetch="https://github.com/LineageOS"
+          revision="lineage-17.1" />
   <remote name="github"
           fetch="https://github.com/" />
-
+  <remote name="pixel"
+          fetch="https://github.com/PixelExperience"
+          revision="ten"
+          review="gerrit.pixelexperience.org" />
+  <remote name="pixel-devices"
+          fetch="https://github.com/PixelExperience-Devices"
+          revision="ten" />
+  <remote name="pixel-gitlab"
+          fetch="https://gitlab.com/PixelExperience"
+          revision="ten" />
+  <remote name="gitlab"
+          fetch="https://gitlab.com" />
   <default revision="refs/tags/android-10.0.0_r33"
            remote="aosp"
            sync-j="4"
