@@ -14,10 +14,11 @@
 
         source $HOME/.zshrc
 
+        echo "[$(date)] Start sync lineage ..."
         pyenv local 3.7.5
-        repo sync
-        while [[ $? == 0 ]]; do
-            echo "[+]  sync lineage failed, try again ..."
+        repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+        while [[ $? != 0 ]]; do
+            echo "[+]  sync failed, try again ..."
             sleep 3
             repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
         done
