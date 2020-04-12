@@ -17,4 +17,4 @@ while [[ $? != 0 ]]; do
 done
 
 enddate=$(date)
-echo "[+] Start at ${begdate} and end at {enddate}."
+echo "[+] Start at ${begdate} and end at ${enddate}."
