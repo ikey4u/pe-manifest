@@ -14,7 +14,7 @@
 
         source $HOME/.zshrc
 
-        echo "[$(date)] Start sync lineage ..."
+        echo "[$(date)] Start sync PixelExperience ..."
         pyenv local 3.7.5
         repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
         while [[ $? != 0 ]]; do
