@@ -5,7 +5,7 @@
         repo init -u https://github.com/ikey4u/pe-manifest -b ten --repo-url https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/
         repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 
-    Or you could using a script:
+    Or you may use a script
 
         curl -LO https://raw.githubusercontent.com/ikey4u/pe-manifest/ten/syncme
 
