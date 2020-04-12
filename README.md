@@ -17,32 +17,47 @@
         lunch aosp_$device-userdebug
         time mka bacon -jX
 
-# Building for Redmi Note 7 Pro
+- Building for `Redmi Note 7 Pro`
 
-Foe example, `Redmi Note 7 Pro` has a codename `violet`, we could execute the
-following command to setup environment
+    - Overview
 
-    lunch aosp_violet-userdebug
+        Full building steps
 
-lunch will call the following python script
+            . build/envsetup.sh
+            lunch aosp_violet-userdebug
+            time mka bacon -j$(nproc --all)
 
-    roomserivce.py violet
+    - Details
 
-roomserivce will do the following stuffs
+        lunch will call the following python script
 
-1. query from github
+            roomserivce.py violet
 
-    The requested url is
+        roomserivce will do the following stuffs
 
-        https://api.github.com/search/repositories?q=violet+user:PixelExperience-Devices+in:name+fork:true
+        1. query from github
 
-    it will find `device_xiaomi_violet` and clone it to local `device/xiaomi/violet`.
+            The requested url is
 
-2. Adding dependencies and fetching
+                https://api.github.com/search/repositories?q=violet+user:PixelExperience-Devices+in:name+fork:true
 
-    Then it will add `device/xiaomi/violet/aosp.dependencies` into
-    `.repo/local_manifests/pixel.xml` and fetch these dependencies.
+            it will find `device_xiaomi_violet` and clone it to local `device/xiaomi/violet`.
 
-After doing the fetching, execute the following command to build the ROM
+        2. Adding dependencies and fetching
 
-    time mka bacon -j$(nproc --all)
+            Then it will add `device/xiaomi/violet/aosp.dependencies` into
+            `.repo/local_manifests/pixel.xml` and fetch these dependencies.
+
+    - Appendix
+
+        I use zsh and pyenv to do the building. If you encounter the following errors:
+
+            pyenv: python3.6: command not found
+
+        This is an issue of pyenv, you may solve it by
+
+            pyenv local 2.7.15 3.6.5
+
+        Google's repo tool unable to write log (`vendor/aosp/tools/changelog.sh`), I do not know why, ignored.
+
+            Got an error, terminating the pool: ValueError: I/O operation on closed file
