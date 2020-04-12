@@ -1,0 +1,20 @@
+#! /bin/zsh
+
+curdir="$(cd "$(dirname "$0")"; pwd -P)"
+cd "$curdir"
+
+source $HOME/.zshrc
+
+begdate=$(date)
+
+echo "[+] Start sync source ..."
+pyenv local 3.7.5
+repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+while [[ $? != 0 ]]; do
+    echo "[+] Sync failed, try again ..."
+    sleep 3
+    repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+done
+
+enddate=$(date)
+echo "[+] Start at ${begdate} and end at {enddate}."
